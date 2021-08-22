@@ -1,0 +1,21 @@
+.right .business-registration-form{
+       width:65vw;
+       background-color:white;
+       float:right
+}
+
+.left  {
+       width:35vw;
+       float:left;
+       height:100vh;
+       background-image:url(..static/images/abel.jpeg);
+       background:red ;
+}
+
+.vertical-menu{
+     width:35vw;
+     float:left;
+     height:100vh;
+}
+
+

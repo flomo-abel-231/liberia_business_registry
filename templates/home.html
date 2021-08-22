@@ -1,0 +1,84 @@
+{%  load static %}
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <link rel="stylesheet" href="{% static 'style.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'background_style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Liberia Business Registry</title>
+
+
+</head>
+<body>
+  <ul>
+      <li> <a href="#home">Home </a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#news">News</a> </li>
+  </ul>
+
+
+
+<div class="right">
+     <div class="header1"><h1> Liberia Business Registry </h1></div><hr>
+
+    <div class="header2"><h2> Start A Business Today </h2></div>
+
+   <div class="paragraph1"> <p>Get the process started in less than 10 minutes. Let us handle the rest.</p></div>
+      <div class="form-center"><form id="login" onsubmit="process(event)" method="post" action="form.py">
+       <p><label><span> Enter Your Email Address: </span> <input type="email" name="email" required></label> </p>
+       <p><label><span> Enter Your Phone Number:</span><input id="phone" type="tel" name="phone" required></label></p>
+       <input type="submit" class="btn" value="Register My Business ! ">
+      </form></div> <div class="alert alert-info" style="display: none;"></div>
+
+
+
+  <script>
+   const phoneInputField = document.querySelector("#phone");
+   const phoneInput = window.intlTelInput(phoneInputField, {
+ initialCountry: "lr",
+ geoIpLookup: getIp, utilsScript:"https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"});
+
+   const info = document.querySelector(".alert-info");
+
+function process(event) {
+ event.preventDefault();
+
+ const phoneNumber = phoneInput.getNumber();
+
+ info.style.display = "";
+ info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+}
+
+function getIp(callback) {
+ fetch('https://ipinfo.io/json?token=<"",>', { headers: { 'Accept': 'application/json' }})
+   .then((resp) => resp.json())
+   .catch(() => {
+     return {
+       country: 'lr',
+     };
+   })
+   .then((resp) => callback(resp.country));
+}
+
+
+
+
+ </script>
+
+</div>
+
+<div class="left">
+
+
+
+</div>
+
+</body>
+</html>
+
+
